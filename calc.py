@@ -1,3 +1,4 @@
+
 #This one just calculates num1 and num2 based on selected operator
 def simple_calculator():
     operation_type = input("Enter the operation type: 1.Addition, 2.Subtraction, 3.Multiplication, 4.Division... ")
@@ -33,7 +34,7 @@ def advanced_calculator():
             buffer += char
         elif char.isspace():
             continue
-        elif char in "+-*/":
+        elif char in "+-*/x":
             if buffer != "":
                 tokens.append(float(buffer))
                 buffer = ""
@@ -48,10 +49,10 @@ def advanced_calculator():
     while i < len(tokens):
         if isinstance(tokens[i], (int, float)):
             current = tokens[i]
-            while i + 1 < len(tokens) and tokens[i+1] in ("*", "/"):
+            while i + 1 < len(tokens) and tokens[i+1] in ("*", "/", "x"):
                 opperator = tokens[i+1]
                 right = tokens[i+2]
-                if opperator == "*":
+                if opperator == "*" or opperator == "x":
                     current = current * right
                 else:
                     current = current / right
